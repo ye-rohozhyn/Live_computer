@@ -8,6 +8,8 @@ TagManager:
   - Switch
   - Fire extinguisher
   - Fire extinguisher holder
+  - Fuse
+  - Fuse Box holder
   layers:
   - Default
   - TransparentFX

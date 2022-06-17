@@ -36,10 +36,32 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (hand.childCount == 1)
+            if (hand.childCount == 1 && hand.GetChild(0).gameObject.tag == "Fire extinguisher")
             {
                 hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().Drop();
             }
+            else if (hand.childCount == 1 && hand.GetChild(0).gameObject.tag == "Fuse")
+            {
+                hand.GetChild(0).gameObject.GetComponent<Fuse>().Drop();
+            }
+
+        }
+
+        if (Input.GetButton("Fire1"))
+        {
+            if (hand.childCount == 1)
+            {
+                if (hand.GetChild(0).gameObject.tag == "Fire extinguisher")
+                {
+                    if(hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().muzzleFlash.isStopped)
+                        hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().muzzleFlash.Play();
+                    hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().Shoot();
+                }
+            }
+        }
+        else if (hand.childCount == 1 && hand.GetChild(0).gameObject.tag == "Fire extinguisher")
+        {
+           hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().muzzleFlash.Stop();
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -66,6 +88,18 @@ public class PlayerMovement : MonoBehaviour
                             if (hand.childCount == 1)
                             {
                                 hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().Give();
+                            }
+                            break;
+                        case "Fuse":
+                            if (hand.childCount == 0)
+                            {
+                                hit.collider.transform.gameObject.GetComponent<Fuse>().Take();
+                            }
+                            break;
+                        case "Fuse box holder":
+                            if (hand.childCount == 1)
+                            {
+                                hand.GetChild(0).gameObject.GetComponent<Fuse>().Give();
                             }
                             break;
                         default:

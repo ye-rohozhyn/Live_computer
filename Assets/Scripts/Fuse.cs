@@ -1,6 +1,6 @@
- using UnityEngine;
+using UnityEngine;
 
-public class FireExtinguisher : MonoBehaviour
+public class Fuse : MonoBehaviour
 {
     [SerializeField] private Transform playerHand;
     [SerializeField] private Transform holder;
@@ -8,8 +8,6 @@ public class FireExtinguisher : MonoBehaviour
     private Rigidbody _rb;
 
     public float range = 1f;
-    public Camera fpsCam;
-    public ParticleSystem muzzleFlash;
 
     private void Start()
     {
@@ -42,16 +40,6 @@ public class FireExtinguisher : MonoBehaviour
         _rb.isKinematic = false;
 
         transform.parent = null;
-    }
-
-    public void Shoot()
-    {
-        muzzleFlash.Play();
-
-        RaycastHit hit;
-
-        Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range);
-
     }
 
 }
