@@ -9,7 +9,9 @@ TagManager:
   - Fire extinguisher
   - Fire extinguisher holder
   - Fuse
-  - Fuse Box holder
+  - Fuse holder
+  - Box
+  - Button
   layers:
   - Default
   - TransparentFX
