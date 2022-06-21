@@ -44,7 +44,7 @@ public class Box : MonoBehaviour
     {
         bool found = false;
 
-        for(int i = 0; i < positions.Length; i++)
+        for(int i = positions.Length - 1; i > 0; i--)
         {
             if (positions[i].childCount > 0)
             {

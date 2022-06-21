@@ -16714,7 +16714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809100275}
   m_LocalRotation: {x: -0.6231875, y: 0.33412188, z: 0.33412188, w: 0.6231875}
-  m_LocalPosition: {x: 1.867, y: 0.231, z: 4.385}
+  m_LocalPosition: {x: 1.867, y: 0.312, z: 4.385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17664,7 +17664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160419508}
   m_LocalRotation: {x: -0.6231875, y: 0.33412188, z: 0.33412188, w: 0.6231875}
-  m_LocalPosition: {x: -1.7756393, y: 0.23093683, z: 1.7904272}
+  m_LocalPosition: {x: -1.7756393, y: 0.319, z: 1.7904272}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17691,12 +17691,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
-  - {fileID: 346287295}
-  - {fileID: 1842893380}
-  - {fileID: 803745673}
-  - {fileID: 1141199019}
-  - {fileID: 530940116}
   - {fileID: 322803884}
+  - {fileID: 530940116}
+  - {fileID: 1141199019}
+  - {fileID: 803745673}
+  - {fileID: 1842893380}
+  - {fileID: 346287295}
   playerHand: {fileID: 1989879371}
 --- !u!65 &1160419511
 BoxCollider:
