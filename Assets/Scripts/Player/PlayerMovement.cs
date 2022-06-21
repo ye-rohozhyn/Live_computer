@@ -6,10 +6,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float pressDistance = 2;
     [SerializeField] private Transform cameraObject;
     [SerializeField] private Transform hand;
+    [SerializeField] private GameObject cursor;
+    [SerializeField] private GameObject hint;
 
     private CharacterController _controller;
     private Transform _playerBody;
     private Vector3 _move;
+    private Interaction previousInteraction;
+
 
     private void Start()
     {
@@ -19,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Interaction();
         CheckPressedKeys();
         Movement();
     }
@@ -118,6 +123,42 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+    void Interaction()
+    {
+        Ray ray = new Ray(cameraObject.position, cameraObject.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, pressDistance))
+        {
+            var interaction = hit.collider.GetComponent<Interaction>();
+            if(interaction != null)
+            {
+                if(interaction != this && interaction != previousInteraction)
+                {
+                    interaction.OnHoverEnter();
+                    previousInteraction = interaction;
+
+                    cursor.SetActive(false);
+                    hint.SetActive(true);
+                }
+            }
+            else if(previousInteraction != null)
+            {
+                previousInteraction.OnHoverExit();
+                previousInteraction = null;
+
+                cursor.SetActive(true);
+                hint.SetActive(false);
+            }
+        }
+        else if (previousInteraction != null)
+        {
+            previousInteraction.OnHoverExit();
+            previousInteraction = null;
+
+            cursor.SetActive(true);
+            hint.SetActive(false);
         }
     }
 }
