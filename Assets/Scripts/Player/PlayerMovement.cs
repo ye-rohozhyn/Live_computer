@@ -12,8 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController _controller;
     private Transform _playerBody;
     private Vector3 _move;
-    private Interaction previousInteraction;
-
+    private DrawOutline _previousInteraction;
 
     private void Start()
     {
@@ -23,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Interaction();
+        DrawOutline();
         CheckPressedKeys();
         Movement();
     }
@@ -63,6 +62,17 @@ public class PlayerMovement : MonoBehaviour
                 if (hand.GetChild(0).gameObject.tag == "Fire extinguisher")
                 {
                     hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().StartShoot();
+
+                    Ray ray = new Ray(cameraObject.position, cameraObject.forward);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(ray, out hit, pressDistance))
+                    {
+                        if (hit.collider.transform.tag == "Fire")
+                        {
+                            hit.collider.transform.GetComponent<SocketFire>().Damage(Time.deltaTime);
+                        }
+                    }
                 }
             }
         }
@@ -118,6 +128,9 @@ public class PlayerMovement : MonoBehaviour
                         case "Button":
                             hit.transform.gameObject.GetComponent<Button>().Click_Action();
                             break;
+                        case "Electric panel":
+                            hit.transform.gameObject.GetComponent<ElectricPanel>().Click_Action();
+                            break;
                         default:
                             break;
                     }
@@ -125,37 +138,42 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    void Interaction()
+
+    private void DrawOutline()
     {
         Ray ray = new Ray(cameraObject.position, cameraObject.forward);
         RaycastHit hit;
+
         if (Physics.Raycast(ray, out hit, pressDistance))
         {
-            var interaction = hit.collider.GetComponent<Interaction>();
+            var interaction = hit.collider.GetComponent<DrawOutline>();
+
             if(interaction != null)
             {
-                if(interaction != this && interaction != previousInteraction)
+                if(interaction != this && interaction != _previousInteraction)
                 {
+                    if (_previousInteraction != null) _previousInteraction.OnHoverExit();
+
                     interaction.OnHoverEnter();
-                    previousInteraction = interaction;
+                    _previousInteraction = interaction;
 
                     cursor.SetActive(false);
                     hint.SetActive(true);
                 }
             }
-            else if(previousInteraction != null)
+            else if(_previousInteraction != null)
             {
-                previousInteraction.OnHoverExit();
-                previousInteraction = null;
+                _previousInteraction.OnHoverExit();
+                _previousInteraction = null;
 
                 cursor.SetActive(true);
                 hint.SetActive(false);
             }
         }
-        else if (previousInteraction != null)
+        else if (_previousInteraction != null)
         {
-            previousInteraction.OnHoverExit();
-            previousInteraction = null;
+            _previousInteraction.OnHoverExit();
+            _previousInteraction = null;
 
             cursor.SetActive(true);
             hint.SetActive(false);

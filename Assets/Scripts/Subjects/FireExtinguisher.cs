@@ -10,6 +10,7 @@ public class FireExtinguisher : MonoBehaviour
 
     private void Start()
     {
+        muzzleFlash.transform.parent = transform;
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -17,28 +18,52 @@ public class FireExtinguisher : MonoBehaviour
     {
         _rb.useGravity = false;
         _rb.isKinematic = true;
+        _rb.detectCollisions = false;
 
         transform.parent = playerHand;
         transform.localPosition = Vector3.zero;
         transform.localRotation = playerHand.localRotation;
+
+        transform.gameObject.layer = playerHand.gameObject.layer;
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.layer = playerHand.gameObject.layer;
+        }
     }
 
     public void Give()
     {
         _rb.useGravity = false;
         _rb.isKinematic = true;
+        _rb.detectCollisions = false;
 
         transform.parent = holder;
         transform.localPosition = Vector3.zero;
         transform.localRotation = holder.localRotation;
+
+        transform.gameObject.layer = holder.gameObject.layer;
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.layer = holder.gameObject.layer;
+        }
     }
 
     public void Drop()
     {
         _rb.useGravity = true;
         _rb.isKinematic = false;
+        _rb.detectCollisions = true;
 
         transform.parent = null;
+
+        transform.gameObject.layer = holder.gameObject.layer;
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.layer = holder.gameObject.layer;
+        }
     }
 
     public void StartShoot()

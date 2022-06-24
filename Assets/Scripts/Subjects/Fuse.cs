@@ -44,6 +44,7 @@ public class Fuse : MonoBehaviour
         takingAway = true;
         fuseRB.useGravity = false;
         fuseRB.isKinematic = true;
+        fuseRB.detectCollisions = false;
 
         transform.parent = playerHand;
         transform.localPosition = Vector3.zero;
@@ -56,6 +57,7 @@ public class Fuse : MonoBehaviour
 
         fuseRB.useGravity = false;
         fuseRB.isKinematic = true;
+        fuseRB.detectCollisions = false;
 
         transform.parent = obj.transform;
         transform.localPosition = Vector3.zero;
@@ -66,6 +68,7 @@ public class Fuse : MonoBehaviour
     {
         fuseRB.useGravity = true;
         fuseRB.isKinematic = false;
+        fuseRB.detectCollisions = true;
 
         transform.parent = null;
     }

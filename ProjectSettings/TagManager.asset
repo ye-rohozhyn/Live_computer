@@ -4,14 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Door
-  - Switch
+  - Fire
   - Fire extinguisher
   - Fire extinguisher holder
+  - Door
+  - Switch
   - Fuse
   - Fuse holder
   - Box
   - Button
+  - Electric panel
   layers:
   - Default
   - TransparentFX
@@ -21,10 +23,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Lighting
+  - Ground
+  - Postprocessing
+  - Hand
   - 
   - 
   - 
@@ -46,6 +48,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fire
+    uniqueID: 3804908061
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

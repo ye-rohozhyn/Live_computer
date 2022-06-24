@@ -21,6 +21,8 @@ public class Box : MonoBehaviour
     {
         Transform obj = playerHand.GetChild(0);
 
+        if (obj.tag != "Fuse") return;
+
         bool found = false;
 
         for (int i = 0; i < positions.Length; i++)
@@ -44,7 +46,7 @@ public class Box : MonoBehaviour
     {
         bool found = false;
 
-        for(int i = positions.Length - 1; i > 0; i--)
+        for(int i = positions.Length - 1; i > -1; i--)
         {
             if (positions[i].childCount > 0)
             {

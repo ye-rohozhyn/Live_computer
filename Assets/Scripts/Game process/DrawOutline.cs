@@ -1,22 +1,24 @@
 using UnityEngine;
 
-
 [RequireComponent(typeof(Outline))]
 
-public class Interaction : MonoBehaviour
+public class DrawOutline : MonoBehaviour
 {
-    private Outline outline;
- 
+    [SerializeField] private int outlineWidth = 6;
 
-    private void OnEnable()
+    private Outline outline;
+
+    private void Start()
     {
         outline = GetComponent<Outline>();
         outline.OutlineWidth = 0;
     }
+
     public void OnHoverEnter()
     {
-        outline.OutlineWidth = 5;
+        outline.OutlineWidth = outlineWidth;
     }
+
     public void OnHoverExit()
     {
         outline.OutlineWidth = 0;
