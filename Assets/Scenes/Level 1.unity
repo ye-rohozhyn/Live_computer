@@ -172,10 +172,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff93ff31722bb4bb7e71f989347210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   fuseWater: {fileID: 2009703745}
   playerHand: {fileID: 1989879371}
   fuseRB: {fileID: 864131}
-  lifeTime: 100
+  lifeTime: 130
   takingAway: 1
 --- !u!54 &864131
 Rigidbody:
@@ -385,6 +387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 74103105}
+  - component: {fileID: 74103106}
   m_Layer: 0
   m_Name: Super PC
   m_TagString: Untagged
@@ -430,6 +433,20 @@ Transform:
   m_Father: {fileID: 8230398607797893455}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &74103106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74103104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15b69d101c679f47985e96595f1744f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 1764890420}
+  healthPC: 150000
 --- !u!1 &96696595
 GameObject:
   m_ObjectHideFlags: 0
@@ -5419,9 +5436,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7df3874ab4f1d64ab7d0e31e1d494cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 3
   fireEffect: {fileID: 1472144408}
   fireHealth: 5
-  leftTime: 40
+  leftTime: 200
   range: 10
 --- !u!1 &202459177
 GameObject:
@@ -5506,10 +5525,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff93ff31722bb4bb7e71f989347210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   fuseWater: {fileID: 1907173787}
   playerHand: {fileID: 1989879371}
   fuseRB: {fileID: 225200768}
-  lifeTime: 100
+  lifeTime: 130
   takingAway: 0
 --- !u!54 &225200768
 Rigidbody:
@@ -20698,10 +20719,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.085
+  m_Radius: 0.07
   m_Height: 0.5301143
   m_Direction: 1
-  m_Center: {x: 0.027350157, y: -0.34536856, z: 0}
+  m_Center: {x: 0.027350157, y: -0.34536856, z: 0.015}
 --- !u!114 &468648415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21025,10 +21046,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff93ff31722bb4bb7e71f989347210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   fuseWater: {fileID: 919115297}
   playerHand: {fileID: 1989879371}
   fuseRB: {fileID: 539830120}
-  lifeTime: 100
+  lifeTime: 130
   takingAway: 1
 --- !u!54 &539830120
 Rigidbody:
@@ -21426,10 +21449,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff93ff31722bb4bb7e71f989347210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   fuseWater: {fileID: 355564689}
   playerHand: {fileID: 1989879371}
   fuseRB: {fileID: 713014789}
-  lifeTime: 100
+  lifeTime: 130
   takingAway: 1
 --- !u!54 &713014789
 Rigidbody:
@@ -21694,10 +21719,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff93ff31722bb4bb7e71f989347210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   fuseWater: {fileID: 9005223374772139886}
   playerHand: {fileID: 1989879371}
   fuseRB: {fileID: 772432680}
-  lifeTime: 100
+  lifeTime: 130
   takingAway: 0
 --- !u!54 &772432680
 Rigidbody:
@@ -21946,10 +21973,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff93ff31722bb4bb7e71f989347210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   fuseWater: {fileID: 529768022}
   playerHand: {fileID: 1989879371}
   fuseRB: {fileID: 821657734}
-  lifeTime: 100
+  lifeTime: 130
   takingAway: 1
 --- !u!54 &821657734
 Rigidbody:
@@ -22138,10 +22167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff93ff31722bb4bb7e71f989347210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   fuseWater: {fileID: 670133503}
   playerHand: {fileID: 1989879371}
   fuseRB: {fileID: 904365810}
-  lifeTime: 100
+  lifeTime: 130
   takingAway: 0
 --- !u!54 &904365810
 Rigidbody:
@@ -23497,6 +23528,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 897052090}
+  - {fileID: 1353653290}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28443,6 +28475,83 @@ Transform:
   m_Father: {fileID: 74103105}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &1353653289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353653290}
+  - component: {fileID: 1353653292}
+  - component: {fileID: 1353653291}
+  m_Layer: 5
+  m_Name: Progress bar background (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1353653290
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353653289}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1764890419}
+  m_Father: {fileID: 1272831966}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -700, y: -55}
+  m_SizeDelta: {x: 450, y: 35.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1353653291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353653289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.54901963}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4a4e91eb30326ab49b8d37689c77f080, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1353653292
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353653289}
+  m_CullTransparentMesh: 1
 --- !u!1 &1412947305
 GameObject:
   m_ObjectHideFlags: 0
@@ -38713,9 +38822,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7df3874ab4f1d64ab7d0e31e1d494cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 3
   fireEffect: {fileID: 4364027717879652121}
   fireHealth: 5
-  leftTime: 40
+  leftTime: 200
   range: 10
 --- !u!1 &1712686115
 GameObject:
@@ -38766,10 +38877,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff93ff31722bb4bb7e71f989347210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   fuseWater: {fileID: 398571850}
   playerHand: {fileID: 1989879371}
   fuseRB: {fileID: 1712686118}
-  lifeTime: 100
+  lifeTime: 130
   takingAway: 1
 --- !u!54 &1712686118
 Rigidbody:
@@ -38831,6 +38944,82 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!1 &1764890418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1764890419}
+  - component: {fileID: 1764890421}
+  - component: {fileID: 1764890420}
+  m_Layer: 5
+  m_Name: Progress bar foreground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1764890419
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764890418}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1353653290}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 450, y: 35.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1764890420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764890418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6, g: 0.29402822, b: 0, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4a4e91eb30326ab49b8d37689c77f080, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1764890421
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764890418}
+  m_CullTransparentMesh: 1
 --- !u!1 &1842893379
 GameObject:
   m_ObjectHideFlags: 0
@@ -39006,10 +39195,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff93ff31722bb4bb7e71f989347210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   fuseWater: {fileID: 1523478855}
   playerHand: {fileID: 1989879371}
   fuseRB: {fileID: 1900748371}
-  lifeTime: 100
+  lifeTime: 130
   takingAway: 1
 --- !u!54 &1900748371
 Rigidbody:
@@ -39435,10 +39626,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff93ff31722bb4bb7e71f989347210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   fuseWater: {fileID: 1415371704}
   playerHand: {fileID: 1989879371}
   fuseRB: {fileID: 2020870280}
-  lifeTime: 100
+  lifeTime: 130
   takingAway: 0
 --- !u!54 &2020870280
 Rigidbody:
@@ -52444,6 +52637,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18247a092526e1849a56ca6d0f8be53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   HingeJoint: {fileID: 5325525622445019729}
   turnOnAngle: 0
   turnOffAngle: -60
@@ -52670,6 +52865,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18247a092526e1849a56ca6d0f8be53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   HingeJoint: {fileID: 5478463026461633354}
   turnOnAngle: 0
   turnOffAngle: -60
@@ -53461,6 +53658,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18247a092526e1849a56ca6d0f8be53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   HingeJoint: {fileID: 6944144439250210729}
   turnOnAngle: 0
   turnOffAngle: -60
@@ -54138,6 +54337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18247a092526e1849a56ca6d0f8be53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   HingeJoint: {fileID: 7863854539717030126}
   turnOnAngle: 0
   turnOffAngle: -60
@@ -54771,6 +54972,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31822a956ceda544adbf2c792d17236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 2
   HingeJoint: {fileID: 7791878061839633768}
   leftTime: 50
 --- !u!1 &8315622784876143645
@@ -54905,6 +55108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4170f1aed2dd1429aedf9e90d8f2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 2
   HingeJoint: {fileID: 8358646289633210903}
   angle: -90
   leftTime: 60
@@ -55141,6 +55346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18247a092526e1849a56ca6d0f8be53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   HingeJoint: {fileID: 8590867180481745436}
   turnOnAngle: 0
   turnOffAngle: -60
@@ -55506,6 +55713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18247a092526e1849a56ca6d0f8be53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  superPC: {fileID: 74103106}
+  damage: 1
   HingeJoint: {fileID: 9141407116763898390}
   turnOnAngle: 0
   turnOffAngle: -60

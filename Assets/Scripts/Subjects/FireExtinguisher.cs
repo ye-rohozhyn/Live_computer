@@ -36,7 +36,7 @@ public class FireExtinguisher : MonoBehaviour
     {
         _rb.useGravity = false;
         _rb.isKinematic = true;
-        _rb.detectCollisions = false;
+        _rb.detectCollisions = true;
 
         transform.parent = holder;
         transform.localPosition = Vector3.zero;

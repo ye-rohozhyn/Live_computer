@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ElectricPanel : MonoBehaviour
 {
+    [SerializeField] private SuperPC superPC;
+    [SerializeField] private float damage;
     [SerializeField] private HingeJoint HingeJoint;
     [SerializeField] private float angle = 45;
     [SerializeField] private float leftTime = 60;
@@ -27,7 +29,7 @@ public class ElectricPanel : MonoBehaviour
         {
             leftTime -= Time.deltaTime;
         }
-        else
+        else if (isTurnOn)
         {
             JointSpring joinSpring = HingeJoint.spring;
             joinSpring.targetPosition = angle;
@@ -43,6 +45,10 @@ public class ElectricPanel : MonoBehaviour
             {
                 if(effects[i].isStopped) effects[i].Play();
             }
+        }
+        else if (!isTurnOn)
+        {
+            superPC.DealingDamage(damage);
         }
     }
 

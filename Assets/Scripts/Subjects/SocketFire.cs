@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SocketFire : MonoBehaviour
 {
+    [SerializeField] private SuperPC superPC;
+    [SerializeField] private float damage;
     [SerializeField] private ParticleSystem fireEffect;
     [SerializeField] private float fireHealth = 5;
     [SerializeField] private float leftTime = 15;
@@ -25,8 +27,13 @@ public class SocketFire : MonoBehaviour
         }
         else
         {
-            fireEffect.transform.localScale = fireScale;
-            if (fireEffect.isStopped) fireEffect.Play();
+            if (fireEffect.isStopped)
+            {
+                fireEffect.transform.localScale = fireScale;
+                fireEffect.Play();
+            }
+
+            superPC.DealingDamage(damage);
         }
     }
 

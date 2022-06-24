@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Manometer : MonoBehaviour
 {
+    [SerializeField] private SuperPC superPC;
+    [SerializeField] private float damage;
     [SerializeField] private HingeJoint HingeJoint;
     [SerializeField] private float leftTime = 50;
 
@@ -29,7 +31,7 @@ public class Manometer : MonoBehaviour
         }
         else
         {
-            Debug.Log("High air pressure");
+            superPC.DealingDamage(damage);
         }
     }
 

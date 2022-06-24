@@ -119,7 +119,8 @@ public class PlayerMovement : MonoBehaviour
                         case "Fire extinguisher holder":
                             if (hand.childCount == 1)
                             {
-                                hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().Give();
+                                if (hand.GetChild(0).gameObject.tag == "Fire extinguisher")
+                                    hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().Give();
                             }
                             break;
                         case "Fuse":
@@ -131,7 +132,8 @@ public class PlayerMovement : MonoBehaviour
                         case "Fuse holder":
                             if (hand.childCount == 1)
                             {
-                                hand.GetChild(0).gameObject.GetComponent<Fuse>().Give(hit.transform.gameObject);
+                                if(hand.GetChild(0).gameObject.tag == "Fuse")
+                                    hand.GetChild(0).gameObject.GetComponent<Fuse>().Give(hit.transform.gameObject);
                             }
                             break;
                         case "Box":

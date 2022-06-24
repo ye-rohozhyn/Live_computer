@@ -1,9 +1,9 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class Fuse : MonoBehaviour
 {
+    [SerializeField] private SuperPC superPC;
+    [SerializeField] private float damage = 0.01f;
     [SerializeField] private Transform fuseWater;
     [SerializeField] private Transform playerHand;
     [SerializeField] private Rigidbody fuseRB;
@@ -33,7 +33,12 @@ public class Fuse : MonoBehaviour
                 if (transform.parent.gameObject.tag == "Fuse holder") takingAway = false;
             }
         }
-        else
+        else if (takingAway == false & lifeTime <= 0)
+        {
+            superPC.DealingDamage(damage);
+        }
+        
+        if(takingAway == false & oneSecond <= 0)
         {
             oneSecond = 1;
         }
@@ -49,6 +54,13 @@ public class Fuse : MonoBehaviour
         transform.parent = playerHand;
         transform.localPosition = Vector3.zero;
         transform.localRotation = playerHand.localRotation;
+
+        transform.gameObject.layer = playerHand.gameObject.layer;
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.layer = playerHand.gameObject.layer;
+        }
     }
 
     public void Give(GameObject obj)
@@ -57,11 +69,18 @@ public class Fuse : MonoBehaviour
 
         fuseRB.useGravity = false;
         fuseRB.isKinematic = true;
-        fuseRB.detectCollisions = false;
+        fuseRB.detectCollisions = true;
 
         transform.parent = obj.transform;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+
+        transform.gameObject.layer = obj.gameObject.layer;
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.layer = obj.gameObject.layer;
+        }
     }
 
     public void Drop()
@@ -71,5 +90,12 @@ public class Fuse : MonoBehaviour
         fuseRB.detectCollisions = true;
 
         transform.parent = null;
+
+        transform.gameObject.layer = 0;
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.layer = 0;
+        }
     }
 }

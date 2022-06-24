@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
+    [SerializeField] private SuperPC superPC;
+    [SerializeField] private float damage;
     [SerializeField] private HingeJoint HingeJoint;
     [SerializeField] private float turnOnAngle = 90.0f;
     [SerializeField] private float turnOffAngle = 0.0f;
@@ -12,6 +14,11 @@ public class Switch : MonoBehaviour
     [SerializeField] private Material turnOffMaterialIndicator;
     [SerializeField] private int indexMaterial;
     [SerializeField] private MiniSwitchesPanel panel;
+
+    private void Update()
+    {
+        if (!isTurnOn) superPC.DealingDamage(damage);
+    }
 
     public void Click_Action()
     {
