@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     private Transform _playerBody;
     private Vector3 _move;
     private DrawOutline _previousInteraction;
+    private float gravityValue = -9.81f;
+    private bool groundedPlayer;
+    private Vector3 playerVelocity;
 
     private void Start()
     {
@@ -29,11 +32,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
+        groundedPlayer = _controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         _move = _playerBody.right * x + _playerBody.forward * z;
         _controller.Move(_move * Time.deltaTime * playerSpeed);
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        _controller.Move(playerVelocity * Time.deltaTime);
     }
 
     private void CheckPressedKeys()
