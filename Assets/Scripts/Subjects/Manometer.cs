@@ -6,9 +6,11 @@ public class Manometer : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private HingeJoint HingeJoint;
     [SerializeField] private float leftTime = 50;
+    [SerializeField] private MessageBox messageBox;
 
     private float startTime = 50;
     private float oneSecond = 1;
+    private bool showMessage = false;
 
     private void Start()
     {
@@ -19,6 +21,7 @@ public class Manometer : MonoBehaviour
     {
         if (leftTime > 0)
         {
+            if (showMessage) showMessage = false;
             leftTime -= Time.deltaTime;
             oneSecond -= Time.deltaTime;
 
@@ -28,6 +31,11 @@ public class Manometer : MonoBehaviour
                 jointSpring.targetPosition += (180 / startTime);
                 HingeJoint.spring = jointSpring;
             }
+        }
+        else if (!showMessage)
+        {
+            messageBox.ShowWarningMessage("High pressure", "Need to bleed air");
+            showMessage = true;
         }
         else
         {

@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform hand;
     [SerializeField] private GameObject cursor;
     [SerializeField] private GameObject hint;
+    [SerializeField] private MessageBox messageBox;
 
     private CharacterController _controller;
     private Transform _playerBody;
@@ -115,12 +116,18 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 hit.collider.transform.gameObject.GetComponent<FireExtinguisher>().Take();
                             }
+                            else
+                            {
+                                messageBox.ShowErrorMessage("I can't take it");
+                            }
                             break;
                         case "Fire extinguisher holder":
                             if (hand.childCount == 1)
                             {
                                 if (hand.GetChild(0).gameObject.tag == "Fire extinguisher")
                                     hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().Give();
+                                else
+                                    messageBox.ShowErrorMessage("it's not from here");
                             }
                             break;
                         case "Fuse":
@@ -128,12 +135,18 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 hit.collider.transform.gameObject.GetComponent<Fuse>().Take();
                             }
+                            else
+                            {
+                                messageBox.ShowErrorMessage("I can't take it");
+                            }
                             break;
                         case "Fuse holder":
                             if (hand.childCount == 1)
                             {
                                 if(hand.GetChild(0).gameObject.tag == "Fuse")
                                     hand.GetChild(0).gameObject.GetComponent<Fuse>().Give(hit.transform.gameObject);
+                                else
+                                    messageBox.ShowErrorMessage("it's not from here");
                             }
                             break;
                         case "Box":

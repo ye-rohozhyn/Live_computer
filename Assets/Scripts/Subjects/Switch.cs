@@ -14,6 +14,7 @@ public class Switch : MonoBehaviour
     [SerializeField] private Material turnOffMaterialIndicator;
     [SerializeField] private int indexMaterial;
     [SerializeField] private MiniSwitchesPanel panel;
+    [SerializeField] private MessageBox messageBox;
 
     private void Update()
     {
@@ -44,6 +45,8 @@ public class Switch : MonoBehaviour
         switches.RemoveAt(index);
 
         panel.SetWaitingList(switches);
+
+        messageBox.ShowWarningMessage("Switch off", "Re-enable required");
     }
 
     public void OnSwitch()

@@ -9,9 +9,11 @@ public class Fuse : MonoBehaviour
     [SerializeField] private Rigidbody fuseRB;
     [SerializeField] private float lifeTime = 30;
     [SerializeField] private bool takingAway = false;
+    [SerializeField] private MessageBox messageBox;
 
     private float startTime = 30;
     private float oneSecond = 1f;
+    private bool showMessage = false;
 
     private void Start()
     {
@@ -32,6 +34,11 @@ public class Fuse : MonoBehaviour
 
                 if (transform.parent.gameObject.tag == "Fuse holder") takingAway = false;
             }
+        }
+        else if (!showMessage & lifeTime <= 0)
+        {
+            messageBox.ShowWarningMessage("Fuse empty", "Replace it with a new one");
+            showMessage = true;
         }
         else if (takingAway == false & lifeTime <= 0)
         {
@@ -57,7 +64,7 @@ public class Fuse : MonoBehaviour
 
         transform.gameObject.layer = playerHand.gameObject.layer;
 
-        foreach (Transform child in transform)
+        foreach (Transform child in GetComponentsInChildren<Transform>())
         {
             child.gameObject.layer = playerHand.gameObject.layer;
         }
@@ -77,7 +84,7 @@ public class Fuse : MonoBehaviour
 
         transform.gameObject.layer = obj.gameObject.layer;
 
-        foreach (Transform child in transform)
+        foreach (Transform child in GetComponentsInChildren<Transform>())
         {
             child.gameObject.layer = obj.gameObject.layer;
         }
@@ -93,7 +100,7 @@ public class Fuse : MonoBehaviour
 
         transform.gameObject.layer = 0;
 
-        foreach (Transform child in transform)
+        foreach (Transform child in GetComponentsInChildren<Transform>())
         {
             child.gameObject.layer = 0;
         }

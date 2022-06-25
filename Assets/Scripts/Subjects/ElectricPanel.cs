@@ -13,9 +13,11 @@ public class ElectricPanel : MonoBehaviour
     [SerializeField] private Material turnOnMaterial;
     [SerializeField] private Material turnOffMaterial;
     [SerializeField] private ParticleSystem[] effects;
+    [SerializeField] private MessageBox messageBox;
 
     private float startTime = 60;
     private bool isTurnOn = false;
+    private bool showMessage = false;
 
     private void Start()
     {
@@ -27,6 +29,7 @@ public class ElectricPanel : MonoBehaviour
     {
         if (leftTime > 0)
         {
+            if (showMessage) showMessage = false;
             leftTime -= Time.deltaTime;
         }
         else if (isTurnOn)
@@ -45,6 +48,11 @@ public class ElectricPanel : MonoBehaviour
             {
                 if(effects[i].isStopped) effects[i].Play();
             }
+        }
+        else if (!showMessage)
+        {
+            messageBox.ShowWarningMessage("Short circuit", "Set up electricity in the electrical panel");
+            showMessage = true;
         }
         else if (!isTurnOn)
         {

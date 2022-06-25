@@ -1,9 +1,11 @@
 using UnityEngine;
+using TMPro;
 
 public class Box : MonoBehaviour
 {
     [SerializeField] private Transform[] positions;
     [SerializeField] private Transform playerHand;
+    [SerializeField] private MessageBox messageBox;
 
     public void Click_Action()
     {
@@ -21,7 +23,11 @@ public class Box : MonoBehaviour
     {
         Transform obj = playerHand.GetChild(0);
 
-        if (obj.tag != "Fuse") return;
+        if (obj.tag != "Fuse")
+        {
+            messageBox.ShowErrorMessage("it's not from here");
+            return;
+        }
 
         bool found = false;
 
@@ -38,7 +44,7 @@ public class Box : MonoBehaviour
 
         if (!found)
         {
-            Debug.Log("Full box");
+            messageBox.ShowErrorMessage("Full box");
         }
     }
 
@@ -59,7 +65,7 @@ public class Box : MonoBehaviour
 
         if (!found)
         {
-            Debug.Log("Empty box");
+            messageBox.ShowErrorMessage("Empty box");
         }
     }
 }

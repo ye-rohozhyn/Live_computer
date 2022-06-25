@@ -8,9 +8,11 @@ public class SocketFire : MonoBehaviour
     [SerializeField] private float fireHealth = 5;
     [SerializeField] private float leftTime = 15;
     [SerializeField] private float range = 5;
+    [SerializeField] private MessageBox messageBox;
 
     private float startTime = 15, startHealth = 5;
     private Vector3 fireScale;
+    private bool showMessage = false;
 
     private void Start()
     {
@@ -23,7 +25,13 @@ public class SocketFire : MonoBehaviour
     {
         if (leftTime > 0)
         {
+            if (showMessage) showMessage = false;
             leftTime -= Time.deltaTime;
+        }
+        else if (!showMessage)
+        {
+            messageBox.ShowWarningMessage("Ignition in the socket", "Needs to be extinguished urgently");
+            showMessage = true;
         }
         else
         {
