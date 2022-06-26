@@ -142,8 +142,9 @@ public class Outline : MonoBehaviour {
 
       // Remove outline shaders
       List<Material> materials = null;
-      if (renderer != null)
-        materials = renderer.sharedMaterials.ToList();
+
+      if (renderer != null) materials = renderer.sharedMaterials.ToList();
+      else return;
 
       materials.Remove(outlineMaskMaterial);
       materials.Remove(outlineFillMaterial);
