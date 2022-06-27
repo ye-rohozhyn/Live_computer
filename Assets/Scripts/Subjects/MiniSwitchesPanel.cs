@@ -20,7 +20,7 @@ public class MiniSwitchesPanel : MonoBehaviour
         {
             leftTime -= Time.deltaTime;
         }
-        else
+        else if (waitingList.Count > 0)
         {
             int index = Random.Range(0, waitingList.Count);
             waitingList[index].OffSwitch();
