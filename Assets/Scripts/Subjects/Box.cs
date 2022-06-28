@@ -6,6 +6,9 @@ public class Box : MonoBehaviour
     [SerializeField] private Transform[] positions;
     [SerializeField] private Transform playerHand;
     [SerializeField] private MessageBox messageBox;
+    [SerializeField] private AudioSource handSource;
+    [SerializeField] private AudioClip takeSound;
+    [SerializeField] private AudioClip giveSound;
 
     public void Click_Action()
     {
@@ -36,7 +39,7 @@ public class Box : MonoBehaviour
             if (positions[i].childCount == 0)
             {
                 obj.GetComponent<Fuse>().Give(positions[i].gameObject);
-
+                handSource.PlayOneShot(giveSound);
                 found = true;
                 break;
             }
@@ -57,7 +60,7 @@ public class Box : MonoBehaviour
             if (positions[i].childCount > 0)
             {
                 positions[i].GetChild(0).GetComponent<Fuse>().Take();
-
+                handSource.PlayOneShot(takeSound);
                 found = true;
                 break;
             }

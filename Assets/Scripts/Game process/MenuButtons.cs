@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
     [SerializeField] private GameObject menuPanel, playPanel, settingsPanel;
+    [SerializeField] private AudioSource buttonsAudioSource;
+    [SerializeField] private AudioClip pressSound;
     [SerializeField] private UnityEngine.UI.Button[] levels;
 
     private int currentCompleteLevel = 1;
@@ -23,16 +25,19 @@ public class MenuButtons : MonoBehaviour
     {
         menuPanel.SetActive(false);
         playPanel.SetActive(true);
+        buttonsAudioSource.PlayOneShot(pressSound);
     }
 
     public void ClickSettingsButton()
     {
         menuPanel.SetActive(false);
         settingsPanel.SetActive(true);
+        buttonsAudioSource.PlayOneShot(pressSound);
     }
 
     public void ClickExitButton()
     {
+        buttonsAudioSource.PlayOneShot(pressSound);
         Application.Quit();
     }
 
@@ -45,16 +50,19 @@ public class MenuButtons : MonoBehaviour
     {
         settingsPanel.SetActive(false);
         menuPanel.SetActive(true);
+        buttonsAudioSource.PlayOneShot(pressSound);
     }
 
     public void ClickPlayBackButton()
     {
         playPanel.SetActive(false);
         menuPanel.SetActive(true);
+        buttonsAudioSource.PlayOneShot(pressSound);
     }
 
     public void StartLevel(int levelNumber)
     {
+        buttonsAudioSource.PlayOneShot(pressSound);
         SceneManager.LoadScene("Level " + levelNumber);
     }
 }

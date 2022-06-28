@@ -5,6 +5,7 @@ public class FireExtinguisher : MonoBehaviour
     [SerializeField] private Transform playerHand;
     [SerializeField] private Transform holder;
     [SerializeField] private ParticleSystem muzzleFlash;
+    [SerializeField] private AudioSource audioShoot;
 
     private Rigidbody _rb;
 
@@ -68,11 +69,19 @@ public class FireExtinguisher : MonoBehaviour
 
     public void StartShoot()
     {
-        if(muzzleFlash.isStopped) muzzleFlash.Play();
+        if (muzzleFlash.isStopped)
+        {
+            muzzleFlash.Play();
+            audioShoot.Play();
+        }
     }
 
     public void StopShoot()
     {
-        if (muzzleFlash.isPlaying) muzzleFlash.Stop();
+        if (muzzleFlash.isPlaying)
+        {
+            muzzleFlash.Stop();
+            audioShoot.Stop();
+        }
     }
 }

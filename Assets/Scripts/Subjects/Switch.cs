@@ -15,6 +15,8 @@ public class Switch : MonoBehaviour
     [SerializeField] private int indexMaterial;
     [SerializeField] private MiniSwitchesPanel panel;
     [SerializeField] private MessageBox messageBox;
+    [SerializeField] private AudioSource handSource;
+    [SerializeField] private AudioClip switchSound;
 
     private void Update()
     {
@@ -25,6 +27,8 @@ public class Switch : MonoBehaviour
     {
         if (isTurnOn) OffSwitch();
         else OnSwitch();
+
+        handSource.PlayOneShot(switchSound);
     }
 
     public void OffSwitch()

@@ -9,6 +9,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject cursor;
     [SerializeField] private GameObject hint;
     [SerializeField] private MessageBox messageBox;
+    [Header("Sounds")]
+    [SerializeField] private AudioSource stepSource;
+    [SerializeField] private AudioSource handSource;
+    [SerializeField] private AudioClip stepSound;
+    [SerializeField] private float stepRate = 1.5f;
+    [SerializeField] private AudioClip takeSound;
+    [SerializeField] private AudioClip giveSound;
 
     private CharacterController _controller;
     private Transform _playerBody;
@@ -17,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private float gravityValue = -9.81f;
     private bool groundedPlayer;
     private Vector3 playerVelocity;
+    private float _timer;
 
     private void Start()
     {
@@ -43,6 +51,14 @@ public class PlayerMovement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         _move = _playerBody.right * x + _playerBody.forward * z;
+
+        _timer += Time.deltaTime;
+        if (_timer >= 1 / stepRate & groundedPlayer & _move != Vector3.zero)
+        {
+            _timer = 0;
+            stepSource.PlayOneShot(stepSound);
+        }
+        
         _controller.Move(_move * Time.deltaTime * playerSpeed);
 
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -115,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
                             if (hand.childCount == 0)
                             {
                                 hit.collider.transform.gameObject.GetComponent<FireExtinguisher>().Take();
+                                handSource.PlayOneShot(takeSound);
                             }
                             else
                             {
@@ -125,15 +142,18 @@ public class PlayerMovement : MonoBehaviour
                             if (hand.childCount == 1)
                             {
                                 if (hand.GetChild(0).gameObject.tag == "Fire extinguisher")
+                                {
                                     hand.GetChild(0).gameObject.GetComponent<FireExtinguisher>().Give();
-                                else
-                                    messageBox.ShowErrorMessage("it's not from here");
+                                    handSource.PlayOneShot(giveSound);
+                                }
+                                else messageBox.ShowErrorMessage("it's not from here");
                             }
                             break;
                         case "Fuse":
                             if (hand.childCount == 0)
                             {
                                 hit.collider.transform.gameObject.GetComponent<Fuse>().Take();
+                                handSource.PlayOneShot(takeSound);
                             }
                             else
                             {
@@ -143,8 +163,11 @@ public class PlayerMovement : MonoBehaviour
                         case "Fuse holder":
                             if (hand.childCount == 1)
                             {
-                                if(hand.GetChild(0).gameObject.tag == "Fuse")
+                                if (hand.GetChild(0).gameObject.tag == "Fuse")
+                                {
                                     hand.GetChild(0).gameObject.GetComponent<Fuse>().Give(hit.transform.gameObject);
+                                    handSource.PlayOneShot(giveSound);
+                                }
                                 else
                                     messageBox.ShowErrorMessage("it's not from here");
                             }

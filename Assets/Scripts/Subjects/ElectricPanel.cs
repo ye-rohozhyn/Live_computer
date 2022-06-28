@@ -14,6 +14,10 @@ public class ElectricPanel : MonoBehaviour
     [SerializeField] private Material turnOffMaterial;
     [SerializeField] private ParticleSystem[] effects;
     [SerializeField] private MessageBox messageBox;
+    [SerializeField] private AudioSource handSource;
+    [SerializeField] private AudioSource electricPanelSource;
+    [SerializeField] private AudioClip switchSound;
+    [SerializeField] private AudioClip sparkSound;
 
     private float startTime = 60;
     private bool isTurnOn = false;
@@ -22,7 +26,22 @@ public class ElectricPanel : MonoBehaviour
     private void Start()
     {
         startTime = leftTime;
-        Click_Action();
+        leftTime = Random.Range(startTime - range, startTime + range);
+
+        JointSpring joinSpring = HingeJoint.spring;
+        joinSpring.targetPosition = 0;
+        HingeJoint.spring = joinSpring;
+
+        Material[] materials = meshRenderer.materials;
+        materials[index] = turnOnMaterial;
+        meshRenderer.materials = materials;
+
+        isTurnOn = true;
+
+        for (int i = 0; i < effects.Length; i++)
+        {
+            if (effects[i].isPlaying) effects[i].Stop();
+        }
     }
 
     private void Update()
@@ -57,6 +76,7 @@ public class ElectricPanel : MonoBehaviour
         else if (!isTurnOn)
         {
             superPC.DealingDamage(damage);
+            if(!electricPanelSource.isPlaying) electricPanelSource.PlayOneShot(sparkSound);
         }
     }
 
@@ -80,5 +100,7 @@ public class ElectricPanel : MonoBehaviour
         {
             if (effects[i].isPlaying) effects[i].Stop();
         }
+
+        handSource.PlayOneShot(switchSound);
     }
 }
