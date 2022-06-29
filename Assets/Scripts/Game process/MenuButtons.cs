@@ -43,7 +43,7 @@ public class MenuButtons : MonoBehaviour
 
     public void ClickApplyButton()
     {
-
+        buttonsAudioSource.PlayOneShot(pressSound);
     }
 
     public void ClickSettingBackButton()

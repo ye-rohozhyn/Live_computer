@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float stepRate = 1.5f;
     [SerializeField] private AudioClip takeSound;
     [SerializeField] private AudioClip giveSound;
+    [SerializeField] private AudioClip pressSound;
+    [Header("Menu")]
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject progressBarCanvas;
+    [SerializeField] private GameObject messageCanvas;
+    [SerializeField] private GameObject cursorCanvas;
 
     private CharacterController _controller;
     private Transform _playerBody;
@@ -25,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private bool groundedPlayer;
     private Vector3 playerVelocity;
     private float _timer;
+    private bool menuOpen = false;
 
     private void Start()
     {
@@ -187,6 +196,18 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = menuOpen ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = !menuOpen;
+            progressBarCanvas.SetActive(menuOpen);
+            messageCanvas.SetActive(menuOpen);
+            cursorCanvas.SetActive(menuOpen);
+            Time.timeScale = menuOpen ? 1 : 0;
+            menuPanel.SetActive(!menuOpen);
+            menuOpen = !menuOpen;
+        }
     }
 
     private void DrawOutline()
@@ -228,5 +249,39 @@ public class PlayerMovement : MonoBehaviour
             cursor.SetActive(true);
             hint.SetActive(false);
         }
+    }
+
+    public void ResumeClick()
+    {
+        Cursor.lockState =CursorLockMode.Locked;
+        Cursor.visible = false;
+        progressBarCanvas.SetActive(true);
+        messageCanvas.SetActive(true);
+        cursorCanvas.SetActive(true);
+        Time.timeScale = 1;
+        menuPanel.SetActive(false);
+        menuOpen = false;
+    }
+
+    public void SettingsClick()
+    {
+        menuPanel.SetActive(false);
+        settingsPanel.SetActive(true);
+    }
+
+    public void ExitClick()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void BackClick()
+    {
+        menuPanel.SetActive(true);
+        settingsPanel.SetActive(false);
+    }
+
+    public void PressSound()
+    {
+        handSource.PlayOneShot(pressSound);
     }
 }

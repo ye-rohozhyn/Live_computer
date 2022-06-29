@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using System;
 using TMPro;
@@ -16,6 +15,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI restartButtonText;
 
     private EndGame _endGame;
+    private float oneSecond = 1;
 
     private void Start()
     {
@@ -27,7 +27,26 @@ public class Timer : MonoBehaviour
     {
         if (takingAway == false & secondsLeft > 0)
         {
-            StartCoroutine(TimerTake());
+            if(oneSecond <= 0)
+            {
+                oneSecond = 1;
+                secondsLeft -= 1;
+
+                double minutes, seconds;
+                minutes = Math.Floor(secondsLeft / 60);
+                seconds = secondsLeft - 60 * Math.Floor(secondsLeft / 60);
+
+                if (minutes < 10) textDisplay.text = "0" + minutes + ":";
+                else textDisplay.text = minutes + ":";
+                if (seconds < 10) textDisplay.text += "0" + seconds;
+                else textDisplay.text += seconds;
+
+                takingAway = false;
+            }
+            else
+            {
+                oneSecond -= Time.deltaTime;
+            }
         }
         else if (takingAway == false & secondsLeft <= 0)
         {
@@ -49,24 +68,5 @@ public class Timer : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-    }
-
-    IEnumerator TimerTake()
-    {
-        takingAway = true;
-        yield return new WaitForSeconds(1);
-
-        secondsLeft -= 1;
-
-        double minutes, seconds;
-        minutes = Math.Floor(secondsLeft / 60);
-        seconds = secondsLeft - 60 * Math.Floor(secondsLeft / 60);
-
-        if (minutes < 10) textDisplay.text = "0" + minutes + ":";
-        else textDisplay.text = minutes + ":";
-        if (seconds < 10) textDisplay.text += "0" + seconds;
-        else textDisplay.text += seconds;
-
-        takingAway = false;
     }
 }
